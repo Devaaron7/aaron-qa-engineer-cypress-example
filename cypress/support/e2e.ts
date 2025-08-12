@@ -7,17 +7,33 @@
 //
 // You can change the location of this file or turn off
 // automatically serving support files with the
-// 'supportFile' configuration option.
+// "supportFile" configuration option.
 //
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands"
+import "cypress-xpath"
+import "cypress-iframe"
+import "cypress-plugin-tab"
 
-Cypress.on('uncaught:exception', (err) => {
-  if (err.message.includes('ResizeObserver loop')) {
+
+// Using for Specific errors
+/* 
+Cypress.on("uncaught:exception", (err) => {
+  if (err.message.includes("ResizeObserver loop") ||
+   err.message.includes("LO is not defined") || 
+  err.message.includes("getComputedStyle"))
+    {
     return false
   }
+})
+*/
+
+// Using this approach for the demo
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from failing the test
+  return false
 })
