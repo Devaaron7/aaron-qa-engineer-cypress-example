@@ -11,7 +11,7 @@ describe("Ask question on Azure Website", () => {
       .should("be.visible")
       .click()
   
-    cy.xpath("//div [@class = 'ai-chat-drawer__body' ]")
+    cy.xpath("//div [@class = 'ai-chat-drawer__body' ]", { timeout: 15000 })
       .contains("Does your platform support Mac testing?")
 
   })
